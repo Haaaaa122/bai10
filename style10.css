@@ -1,6 +1,8 @@
+/* 1. Sửa lỗi dấu '-' thành '*' và thêm box-sizing */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -13,39 +15,49 @@ li {
     list-style: none;
 }
 
+/* 2. Thêm overflow: hidden để chống sụp khung do float */
 .container {
     width: 900px;
     margin: 30px auto;
+    background-color: #fff; /* Nên thêm nền trắng để nội dung dễ đọc */
+    padding: 20px;
+    overflow: hidden; 
 }
 
+/* 3. Điều chỉnh phần trăm width để 2 cột nằm vừa 100% */
 .navigation {
     float: left;
-    width: 20%;
+    width: 25%;
+    padding-right: 20px; /* Dùng padding cho cột thay vì margin-right ở li */
 }
 
 .navigation li {
-    padding: 10px 15px;
     background-color: white;
-    margin-right: 20px;
     margin-bottom: 10px;
     border-right: 10px solid blue;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.navigation li:hover a,
-.navigation li:hover {
-    background-color: rgb(150, 69, 69);
-    color: white;
-}
-
+/* 4. Đưa padding vào thẻ a để bấm được vào toàn bộ diện tích li */
 .navigation li a {
+    display: block;
+    padding: 10px 15px;
     text-decoration: none;
     color: #555;
 }
 
+.navigation li:hover {
+    background-color: rgb(150, 69, 69);
+}
+
+.navigation li:hover a {
+    color: white;
+}
+
 .content {
     float: left;
-    width: 80%;
+    width: 75%;
 }
 
 .title {
@@ -68,7 +80,7 @@ li {
 }
 
 .underline {
-    border: 1px solid #555;
-    border-style: dashed;
+    border: none;
+    border-top: 1px dashed #555; /* Cách viết chuẩn hơn cho đường gạch nét đứt */
     margin-bottom: 10px;
 }
